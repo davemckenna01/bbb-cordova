@@ -13,17 +13,19 @@ function(app, Router) {
   // navigation from this instance.
   app.router = new Router();
 
-  // Trigger the initial route and enable HTML5 History API support, set the
-  // root folder to '/' by default.  Change in app.js.
-  document.addEventListener('deviceready', start, false);
-
-  // $(function(){
-  //   start();
-  // });
-
   function start() {
     console.log('started!');
     Backbone.history.start({ pushState: false, root: app.root });
+  }
+
+  // Trigger the initial route and enable HTML5 History API support, set the
+  // root folder to '/' by default.  Change in app.js.
+  if (app.isCordova()) {
+    console.log('it\'s cordova!');
+    document.addEventListener('deviceready', start, false);
+  } else {
+    console.log('it\'s NOT cordova!');
+    start();
   }
 
   // All navigation that is relative should be passed through the navigate

@@ -1,5 +1,5 @@
 define([
-  'modules/testviews'
+  'modules/test'
 ],
 
 function(Test) {
@@ -25,19 +25,25 @@ function(Test) {
 
     first: function() {
       this.layout.insertViews({
-        '#hook': new Test.First()
+        '#hook': new Test.Views.First({
+          model: new Test.Model()
+        })
       }).render();
     },
 
     second: function() {
       this.layout.insertViews({
-        '#hook': new Test.Second()
+        '#hook': new Test.Views.Second({
+          model: new Test.Model()
+        })
       }).render();
     },
 
     third: function() {
       this.layout.insertViews({
-        '#hook': new Test.Third()
+        '#hook': new Test.Views.Third({
+          model: new Test.Model()
+        })
       }).render();
     }
 

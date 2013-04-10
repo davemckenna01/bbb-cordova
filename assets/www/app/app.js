@@ -79,7 +79,14 @@ function(LayoutManager) {
 
       // Cache the reference.
       return this.layout;
+    },
+
+    isCordova: function() {
+      return (cordova || PhoneGap || phonegap) 
+      && /^file:\/{3}[^\/]/i.test(window.location.href) 
+      && /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
     }
+    
   }, Backbone.Events);
 
 });
